@@ -1,7 +1,11 @@
 function [Y] = convolution(x1, x2)
 
-X = [x1,zeros(1,length(x2))];
-H = [x2,zeros(1,length(x1))];
+% Force column vector
+x1 = x1(:);
+x2 = x2(:);
+
+X = [x1;zeros(length(x2),1)];
+H = [x2;zeros(length(x1),1)];
 
 Y = zeros((length(x1)+length(x2)),1);
 for ii=1:( length(Y)-1 )
